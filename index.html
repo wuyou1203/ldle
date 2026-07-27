@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>像素工厂大亨 - Pixel Factory Tycoon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 头部：显示资源 -->
+        <header>
+            <h1>像素工厂</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="label">金币:</span>
+                    <span id="money">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">每秒收益(GPS):</span>
+                    <span id="gps">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- 左侧：点击区 -->
+            <section id="click-area">
+                <div id="factory-core" class="pixel-art">
+                    <div class="pixel-shading"></div>
+                    <div class="pixel-window"></div>
+                    <div class="pixel-door"></div>
+                    <div class="pixel-smoke"></div>
+                    <!-- 新增装饰层 -->
+                    <div id="factory-decorations"></div>
+                    <div id="click-tip">点击这里开始!</div>
+                </div>
+                <div class="prestige-info">
+                    <span id="prestige-bonus-display">加成: +0%</span>
+                </div>
+            </section>
+
+            <!-- 右侧：商店区 -->
+            <section id="shop-area">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="showTab('buildings')">建筑</button>
+                    <button class="tab-btn" onclick="showTab('upgrades')">升级</button>
+                    <button class="tab-btn" onclick="showTab('prestige')">重塑</button>
+                </div>
+                <div id="buildings-list">
+                    <div id="shop-items"></div>
+                </div>
+                <div id="upgrades-list" style="display:none">
+                    <div id="upgrade-items"></div>
+                </div>
+                <div id="prestige-area" style="display:none; text-align: center; padding: 20px;">
+                    <h3>量子化重塑</h3>
+                    <p>通过重置你的商业帝国，提取“原始像素”来永久提升产能。</p>
+                    <div class="prestige-stats">
+                        <p>可获得像素碎片: <span id="pixels-ready">0</span></p>
+                        <p>当前总碎片: <span id="pixels-total">0</span></p>
+                    </div>
+                    <button id="prestige-btn" class="danger-btn">进行重塑</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <button id="save-btn">手动存档</button>
+            <button id="reset-btn">重置游戏</button>
+        </footer>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
