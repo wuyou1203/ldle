@@ -8,40 +8,113 @@
 </head>
 <body>
     <div id="game-container">
-        <!-- 头部：显示资源 -->
         <header>
-            <h1>像素工厂</h1>
+            <div class="title-block">
+                <p class="eyebrow">Idle Pixel Assembly Line</p>
+                <h1>像素工厂</h1>
+                <p class="subtitle">把一间小作坊扩张成高频运转的自动化帝国。</p>
+            </div>
             <div class="stats">
                 <div class="stat-item">
-                    <span class="label">金币:</span>
+                    <span class="label">金币</span>
                     <span id="money">0</span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">每秒收益(GPS):</span>
+                    <span class="label">每秒收益</span>
                     <span id="gps">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">点击产值</span>
+                    <span id="click-power">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">生产日</span>
+                    <span id="day-count">1</span>
+                </div>
+            </div>
+            <div class="top-ribbon">
+                <div class="ribbon-card">
+                    <span class="ribbon-label">当前连击</span>
+                    <strong id="combo-display">x1.0</strong>
+                </div>
+                <div class="ribbon-card wide">
+                    <span class="ribbon-label">超频能量</span>
+                    <div class="progress-bar compact">
+                        <div id="overdrive-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="ribbon-card">
+                    <span class="ribbon-label">终生产值</span>
+                    <strong id="lifetime-money">0</strong>
                 </div>
             </div>
         </header>
 
         <main>
-            <!-- 左侧：点击区 -->
             <section id="click-area">
+                <div class="panel-heading">
+                    <div>
+                        <p class="panel-kicker">控制中枢</p>
+                        <h2>厂房核心</h2>
+                    </div>
+                    <button id="overdrive-btn" class="action-btn">启动超频</button>
+                </div>
                 <div id="factory-core" class="pixel-art">
                     <div class="pixel-shading"></div>
                     <div class="pixel-window"></div>
                     <div class="pixel-door"></div>
                     <div class="pixel-smoke"></div>
-                    <!-- 新增装饰层 -->
                     <div id="factory-decorations"></div>
                     <div id="click-tip">点击这里开始!</div>
                 </div>
-                <div class="prestige-info">
-                    <span id="prestige-bonus-display">加成: +0%</span>
+                <div class="click-support-grid">
+                    <div class="info-panel goal-panel">
+                        <p class="panel-kicker">当前订单</p>
+                        <h3 id="goal-title">等待派发</h3>
+                        <p id="goal-desc">完成目标来拿到一次性资源奖励。</p>
+                        <div class="progress-bar">
+                            <div id="goal-progress-fill" class="progress-fill warm"></div>
+                        </div>
+                        <div class="goal-meta">
+                            <span id="goal-progress-text">0 / 0</span>
+                            <span id="goal-reward">奖励: -</span>
+                        </div>
+                    </div>
+                    <div class="info-panel status-panel">
+                        <p class="panel-kicker">运行状态</p>
+                        <div class="status-line">
+                            <span>永久加成</span>
+                            <strong id="prestige-bonus-display">+0%</strong>
+                        </div>
+                        <div class="status-line">
+                            <span>建筑总数</span>
+                            <strong id="total-buildings">0</strong>
+                        </div>
+                        <div class="status-line">
+                            <span>已解锁成就</span>
+                            <strong id="achievement-count">0</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="lower-panels">
+                    <div class="info-panel achievements-panel">
+                        <p class="panel-kicker">荣誉墙</p>
+                        <div id="achievement-list" class="badge-list"></div>
+                    </div>
+                    <div class="info-panel event-panel">
+                        <p class="panel-kicker">生产播报</p>
+                        <div id="event-log" class="event-log"></div>
+                    </div>
                 </div>
             </section>
 
-            <!-- 右侧：商店区 -->
             <section id="shop-area">
+                <div class="panel-heading shop-heading">
+                    <div>
+                        <p class="panel-kicker">扩建与研究</p>
+                        <h2>工厂调度台</h2>
+                    </div>
+                </div>
                 <div class="tabs">
                     <button class="tab-btn active" onclick="showTab('buildings')">建筑</button>
                     <button class="tab-btn" onclick="showTab('upgrades')">升级</button>
@@ -68,6 +141,7 @@
         <footer>
             <button id="save-btn">手动存档</button>
             <button id="reset-btn">重置游戏</button>
+            <span id="save-status">自动存档待命</span>
         </footer>
     </div>
     <script src="game.js"></script>
